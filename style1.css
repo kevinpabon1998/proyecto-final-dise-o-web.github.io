@@ -1,0 +1,356 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(fondos/v2-MINIMALIST-LANDSCAPE-SUN-4k.png);
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: transparent;
+    color: #555;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 30px;
+    margin-right: 20px;
+    border-radius: 30%;
+}
+
+h2 {
+    color: white;
+}
+
+/* CSS Mejorado para las listas desplegables */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+    position: relative;
+    list-style: none;
+}
+
+.dropbtn {
+    background: #333; /* Fondo semitransparente para coincidir con el menú desplegable */
+    color: white;
+    text-decoration: none;
+    border: gray;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px; /* Bordes redondeados para el botón */
+}
+
+.dropdown-content {
+    text-decoration: none;
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+    color: white;
+    min-width: 200px; /* Ancho mínimo mayor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 0; /* Espaciado interno */
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none; /* Elimina el subrayado */
+    display: block;
+    transition: background 0.3s; /* Transición suave */
+    border-radius: 5px; /* Bordes redondeados para los enlaces */
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo al pasar el mouse */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo al pasar el mouse sobre el botón */
+}
+
+.search-bar {
+    margin-right: 60px;
+    position: relative; /* Añadido para el posicionamiento del icono */
+}
+
+.search-bar input[type="text"] {
+    padding: 10px; /* Aumenta el espacio interior */
+    font-size: 16px;
+    border: 1px solid #ccc; /* Borde más definido */
+    border-radius: 20px; /* Bordes redondeados */
+    outline: none; /* Elimina el borde azul al enfocar */
+    transition: all 0.3s ease; /* Transición suave para cambios */
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+}
+
+.search-bar input[type="text"]:hover,
+.search-bar input[type="text"]:focus {
+    background-color: rgba(255, 255, 255, 1); /* Cambia a fondo sólido al pasar el mouse o enfocar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.header-button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.header-button:hover {
+    background-color: #777;
+}
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center; /* Centra las tarjetas */
+}
+
+.product {
+    background-color: rgba(36, 34, 34, 0.9); /* Fondo semitransparente */
+    border: 2px solid #ccc;
+    padding: 20px;
+    width: calc(25% - 40px); /* Ajusta el tamaño para 4 tarjetas por fila */
+    box-sizing: border-box;
+    position: relative;
+    min-height: 300px; /* Altura mínima para asegurar simetría */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: neon-border 1.5s infinite alternate;
+    border-radius: 10px; /* Borde redondeado */
+    transition: transform 0.3s ease; /* Transición para agrandar */
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+}
+
+.product:hover {
+    transform: scale(1.05); /* Agrandar al poner el mouse encima */
+}
+
+@keyframes neon-border {
+    0% {
+        box-shadow: 0 0 20px rgba(97, 76, 175, 0.8),
+                    0 0 40px rgba(97, 76, 175, 0.6),
+                    0 0 60px rgba(97, 76, 175, 0.4),
+                    0 0 80px rgba(97, 76, 175, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(97, 76, 175, 0.2),
+                    0 0 40px rgba(97, 76, 175, 0.4),
+                    0 0 60px rgba(97, 76, 175, 0.6),
+                    0 0 80px rgba(97, 76, 175, 0.8);
+    }
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; /* Mantiene la relación de aspecto */
+    max-height: 200px; /* Altura máxima para imágenes */
+    border-radius: 10px; /* Borde redondeado para las imágenes */
+}
+
+.product h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    text-align: center;
+    color: white; /* Color de texto */
+}
+
+.product .Precio {
+    font-size: 16px;
+    color: white; /* Color de texto */
+    text-align: center;
+}
+
+.product button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+}
+
+.product button:hover {
+    background-color: #555;
+}
+
+#welcome-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+#welcome-screen h1 {
+    font-size: 2.5em;
+    color: white;
+}
+
+#welcome-screen p {
+    font-size: 1.2em;
+    color: white;
+}
+
+@keyframes neon-border-animation {
+    0%, 100% {
+        border-color: rgba(0, 255, 255, 0.7);
+    }
+    50% {
+        border-color: rgba(43, 40, 231, 0.7);
+    }
+}
+
+/* Estilo para el botón de cambiar idioma */
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.language-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.language-dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex; /* Para alinear la imagen y el texto */
+    align-items: center;
+    transition: background 0.3s;
+    border-radius: 5px; 
+}
+
+.language-dropdown-content a img {
+    margin-right: 10px;
+    width: 20px; /* Ajusta el tamaño de las banderas */
+    height: auto;
+}
+
+.language-dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.language-dropdown:hover .language-dropdown-content {
+    display: block;
+}
+
+.language-dropdown:hover .language-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.language-btn {
+    background: #333;
+    color: white;
+    text-decoration: none;
+    border: gray;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.cart-counter {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-counter::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #333;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+/* Estilos para el modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 600px; 
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Videojuegos y Consolas</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="fondos/logo.jpg" alt="Logo" class="logo">
+            <nav>
+                <ul>
+                    <li class="dropdown" onmouseover="showDropdown('xbox')" onmouseout="hideDropdown()">
+                        <a href="#" class="dropbtn">Xbox</a>
+                        <div class="dropdown-content" id="xbox-dropdown">
+                            <a href="#" onclick="showProducts('xbox', 'juegos')">Juegos</a>
+                            <a href="#" onclick="showProducts('xbox', 'consolas')">Consolas</a>
+                            <a href="#" onclick="showProducts('xbox', 'accesorios')">Accesorios</a>
+                        </div>
+                    </li>
+                    <li class="dropdown" onmouseover="showDropdown('playstation')" onmouseout="hideDropdown()">
+                        <a href="#" class="dropbtn">PlayStation</a>
+                        <div class="dropdown-content" id="playstation-dropdown">
+                            <a href="#" onclick="showProducts('playstation', 'juegos')">Juegos</a>
+                            <a href="#" onclick="showProducts('playstation', 'consolas')">Consolas</a>
+                            <a href="#" onclick="showProducts('playstation', 'accesorios')">Accesorios</a>
+                        </div>
+                    </li>
+                    <li class="dropdown" onmouseover="showDropdown('nintendo')" onmouseout="hideDropdown()">
+                        <a href="#" class="dropbtn">Nintendo</a>
+                        <div class="dropdown-content" id="nintendo-dropdown">
+                            <a href="#" onclick="showProducts('nintendo', 'juegos')">Juegos</a>
+                            <a href="#" onclick="showProducts('nintendo', 'consolas')">Consolas</a>
+                            <a href="#" onclick="showProducts('nintendo', 'accesorios')">Accesorios</a>
+                        </div>
+                    </li>
+                    <li class="dropdown" onmouseover="showDropdown('android')" onmouseout="hideDropdown()">
+                        <a href="#" class="dropbtn">Android</a>
+                        <div class="dropdown-content" id="android-dropdown">
+                            <a href="#" onclick="showProducts('android', 'juegos')">Juegos</a>
+                            <a href="#" onclick="showProducts('android', 'consolas')">Consolas</a>
+                            <a href="#" onclick="showProducts('android', 'accesorios')">Accesorios</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search-bar">
+                <input type="text" id="search-bar" placeholder="Buscar productos...">
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+            <div class="language-dropdown">
+                <button class="language-btn">Cambiar Idioma</button>
+                <div class="language-dropdown-content">
+                    <a href="#" onclick="setLanguage('es')"><img src="banderas/españa.png" alt="Español" class="flag-icon"> Español</a>
+                    <a href="#" onclick="setLanguage('en')"><img src="banderas/eeuu.png" alt="Inglés" class="flag-icon"> Inglés</a>
+                    <a href="#" onclick="setLanguage('fr')"><img src="banderas/francia.png" alt="Francés" class="flag-icon"> Francés</a>
+                    <a href="#" onclick="setLanguage('de')"><img src="banderas/alemania.png" alt="Alemán" class="flag-icon"> Alemán</a>
+                    <a href="#" onclick="setLanguage('it')"><img src="banderas/italia.png" alt="Italiano" class="flag-icon"> Italiano</a>
+                </div>
+            </div>
+            <button class="header-button cart-counter" id="cartButton" data-count="0" onclick="viewCart()">Carrito</button>
+            <button class="header-button" onclick="logout()">Cerrar Sesión</button>
+        </div>
+    </header>
+    <div id="welcome-screen">
+        <h1 id="welcome-title">Bienvenido a mi tienda virtual gamer espero que esta tienda sea de su agrado y tenga una grata experiencia usandola.</h1>
+        <p id="navigate-text">Utiliza el menú que se encuentra en la parte superior para navegar por los productos.</p>
+    </div>
+        <div class="productos" id="products-container">
+            <!-- Productos de Xbox -->
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/gears5.jpg" alt="Gears of War 5">
+                <h2>Gears of War 5</h2>
+                <div class="Precio">225.000 Pesos</div>
+                <button class="Detalles" onclick="openTrailer('https://www.youtube.com/watch?v=RGGttFpov6s&ab_channel=GameSpot')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/mk1.jpg" alt="Mortal Kombat 1">
+                <h2>Mortal Kombat 1</h2>
+                <div class="Precio">360.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=rRkavvt5x8o&ab_channel=WarnerPlayLatino', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/forza5.jpg" alt="Forza Horizon 5">
+                <h2>Forza Horizon 5</h2>
+                <div class="Precio">80.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=FYH9n37B7Yw&ab_channel=Xbox', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/halo.jpg" alt="Halo Infinite">
+                <h2>Halo Infinite</h2>
+                <div class="Precio">135.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=Fmdb-KmlzD8&ab_channel=HALO', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/tomb.jpg" alt="Tomd Raider">
+                <h2>Tomd Raider</h2>
+                <div class="Precio">94.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=XYtyeqVQnRI&ab_channel=GameSpot', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/RE3.jpg" alt="Resident Evil 3">
+                <h2>Resident Evil 3</h2>
+                <div class="Precio">59.99 €</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=LpCfQh4ptjU&ab_channel=Xbox', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/assassins.jpg" alt="Assassins Creed Valhala">
+                <h2>Assassins Creed Valhala</h2>
+                <div class="Precio">210.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=eARa4PZn_aE&ab_channel=ONEMediaEspa%C3%B1ol', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/fornite.jpg" alt="Fornite">
+                <h2>fornite</h2>
+                <div class="Precio">25.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=IH24dpyaulY&ab_channel=Xbox', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/minecraft.jpg" alt="Minecraft">
+                <h2>Minecraft</h2>
+                <div class="Precio">57.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=NG-5L34HqOs&ab_channel=Minecraft', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox juegos">
+                <img src="juegos de xbox/cod.jpg" alt="Call od Duty">
+                <h2>Call of Duty BO3 Zombie Chronicles</h2>
+                <div class="Precio">350.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=Ni3pi3PJJvM&ab_channel=CallofDuty', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox consolas">
+                <img src="consolas xbox/xboxseriesX.jpg" alt="Xbox Series X">
+                <h2>Xbox Series X</h2>
+                <div class="Precio">1.200.000 Pesos</div>
+                <button class="details-btn" data-details="La Xbox Series X es la consola más poderosa de Microsoft, ofreciendo gráficos 4K y hasta 120 FPS. Cuenta con una unidad de almacenamiento SSD de 1TB para tiempos de carga ultrarrápidos. Ideal para los jugadores que buscan la mejor experiencia de juego.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox consolas">
+                <img src="consolas xbox/xboxseriesS.jpg" alt="Xbox Series S">
+                <h2>Xbox Series S</h2>
+                <div class="Precio">1.000.000 Pesos</div>
+                <button class="details-btn" data-details="La Xbox Series S es una consola compacta y económica que ofrece rendimiento de nueva generación. Compatible con juegos en 1440p y hasta 120 FPS, con un SSD de 512GB para tiempos de carga rápidos. Perfecta para quienes desean calidad a un precio accesible.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox consolas">
+                <img src="consolas xbox/xboxOne.jpg" alt="Xbox One">
+                <h2>Xbox One</h2>
+                <div class="Precio">800.000 Pesos</div>
+                <button class="details-btn" data-details="La Xbox One ofrece una experiencia de entretenimiento completa, con juegos, TV y streaming en un solo dispositivo. Soporta gráficos HD y tiene un disco duro de 500GB o 1TB. Ideal para jugadores que buscan una plataforma versátil.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox consolas">
+                <img src="consolas xbox/xbox360.jpg" alt="Xbox 360">
+                <h2>Xbox360 Normal</h2>
+                <div class="Precio">420.000 Pesos</div>
+                <button class="details-btn" data-details="La Xbox 360 fue una revolución en el mundo de los videojuegos, ofreciendo gráficos HD y una amplia biblioteca de juegos. Su diseño incluye un disco duro extraíble para almacenamiento flexible. Una consola clásica que marcó una época.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox consolas">
+                <img src="consolas xbox/xbox360Slim.jpg" alt="Xbox 360 Slim">
+                <h2>Xbox360 Slim</h2>
+                <div class="Precio">650.000 Pesos</div>
+                <button class="details-btn" data-details="La Xbox 360 Slim es una versión más delgada y elegante de la Xbox 360, con un diseño mejorado y más silencioso. Viene con Wi-Fi integrado y un disco duro interno de 250GB. Ideal para quienes buscan estilo y rendimiento.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox consolas">
+                <img src="consolas xbox/xboxClasico.jpg" alt="Xbox Normal">
+                <h2>Xbox Clasico</h2>
+                <div class="Precio">300.000 Pesos</div>
+                <button class="details-btn" data-details="La Xbox Clásico fue la primera incursión de Microsoft en el mercado de consolas, ofreciendo gráficos avanzados y conectividad en línea. Con un disco duro interno y compatibilidad con DVD, fue pionera en su tiempo. Un verdadero ícono retro.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox accesorios">
+                <img src="accesorios xbox/controlxboxone.jpg" alt="Control Xbox Elite Series">
+                <h2>Control Xbox Elite Series</h2>
+                <div class="Precio">179.000 Pesos</div>
+                <button class="details-btn" data-details="El Control Xbox Elite Series es un mando de alta calidad diseñado para jugadores exigentes. Ofrece botones personalizables, palancas intercambiables y un diseño ergonómico. Perfecto para aquellos que buscan precisión y comodidad en sus juegos.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox accesorios">
+                <img src="accesorios xbox/controlxbox360.jpg" alt="Control Xbox 360">
+                <h2>Control Xbox360 </h2>
+                <div class="Precio">60.000 Pesos €</div>
+                <button class="details-btn" data-details="El Control de Xbox 360 es conocido por su comodidad y durabilidad, con un diseño ergonómico que se adapta a las manos. Ofrece conectividad inalámbrica y vibración para una experiencia de juego inmersiva. Un mando clásico y confiable.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox accesorios">
+                <img src="accesorios xbox/volantexboxone.jpg" alt="Volante Xbox ">
+                <h2>Volante Xbox Series</h2>
+                <div class="Precio">230.000 Pesos</div>
+                <button class="details-btn" data-details="El Volante Xbox Series está diseñado para ofrecer una experiencia de conducción realista con retroalimentación de fuerza avanzada. Compatible con Xbox Series X|S, proporciona un control preciso y sensible. Ideal para entusiastas de los juegos de carreras.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product xbox accesorios">
+                <img src="accesorios xbox/volantexbox360.jpg" alt="volante xbox 360">
+                <h2>Volante Xbox360</h2>
+                <div class="Precio">127.000 Pesos</div>
+                <button class="details-btn" data-details="El Volante Xbox 360 ofrece una experiencia de conducción auténtica con vibración y pedales ajustables. Diseñado para juegos de carreras en la Xbox 360, brinda un control preciso y una sensación de realismo. Perfecto para los fanáticos de las carreras.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+
+            <!-- Productos de PlayStation -->
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/GOW.jpg" alt="God of War">
+                <h2>God of War Ragnarok</h2>
+                <div class="Precio">320.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=F3jePdO9_jc&ab_channel=PlayStationLatinoam%C3%A9rica', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/eldenring.jpg" alt="Elden Ring">
+                <h2>Elden Ring</h2>
+                <div class="Precio">240.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=M-Xh4vbs6go&ab_channel=BANDAINAMCOEurope', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/ghost.jpg" alt="Ghost of Tsushima">
+                <h2>Ghost of Tsushima</h2>
+                <div class="Precio">210.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=jT9edKarhc8&ab_channel=PlayStationEspa%C3%B1a', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/granturismo.jpg" alt="Gran Turismo">
+                <h2>Gran Turismo 7</h2>
+                <div class="Precio">120.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=1tBUsXIkG1A&ab_channel=PlayStation', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/Guardianes.jpg" alt="Guardianes de la galaxia">
+                <h2>Guardianes de la Galaxia</h2>
+                <div class="Precio">59.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=VdMiY9MEeMk&ab_channel=PlayStation', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/REvillage.jpg" alt="Resdent Evil Village">
+                <h2>Residen Evil Village</h2>
+                <div class="Precio">410.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=ztj8fv6Ttp8&ab_channel=PlayStationEspa%C3%B1a', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/sekiro.jpg" alt="Sekiro">
+                <h2>Sekiro</h2>
+                <div class="Precio">170.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=rXMX4YJ7Lks&ab_channel=PlayStation', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/fifa23.jpg" alt="Fifa 23">
+                <h2>Fifa 23</h2>
+                <div class="Precio">30.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=zMyeAFzCTM0&ab_channel=EASPORTSFC', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/ratchet.jpg" alt="Ratchet and clank">
+                <h2>Ratchet and ClanK</h2>
+                <div class="Precio">246.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=IkPWYH403tU&ab_channel=PlayStationEspa%C3%B1a', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation juegos">
+                <img src="juegos de playstation/spiderman.jpg" alt="Spiderman">
+                <h2>Spiderman Miles Morales</h2>
+                <div class="Precio">300.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=Q3kfF3XNzw8&ab_channel=PlayStationEspa%C3%B1a', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation consolas">
+                <img src="consolas playstation/ps5.jpg" alt="PlayStation 5">
+                <h2>PlayStation 5</h2>
+                <div class="Precio">1.800.000 Pesos</div>
+                <button class="details-btn" data-details="El Volante Xbox 360 ofrece una experiencia de conducción auténtica con vibración y pedales ajustables. Diseñado para juegos de carreras en la Xbox 360, brinda un control preciso y una sensación de realismo. Perfecto para los fanáticos de las carreras.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation consolas">
+                <img src="consolas playstation/ps4.jpg" alt="PlayStation 4">
+                <h2>PlayStation 4</h2>
+                <div class="Precio">1.100.000 Pesos</div>
+                <button class="details-btn" data-details="La PlayStation 4 ha sido la consola preferida por muchos, con gráficos impresionantes y una extensa biblioteca de juegos. Soporta resoluciones hasta 1080p y es conocida por su robusta funcionalidad en línea. Perfecta para jugadores que buscan calidad y diversidad.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation consolas">
+                <img src="consolas playstation/ps3.jpg" alt="PlayStation 3">
+                <h2>PlayStation 3</h2>
+                <div class="Precio">700.000 Pesos</div>
+                <button class="details-btn" data-details="La PlayStation 3 introdujo gráficos HD y capacidades de reproducción de Blu-ray. Ofrece una experiencia de juego envolvente y multimedia completa, con soporte para juegos exclusivos y servicios en línea. Un hito en la evolución de las consolas.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation consolas">
+                <img src="consolas playstation/ps2.jpg" alt="PlayStation 2">
+                <h2>PlayStation 2</h2>
+                <div class="Precio">430.000 Pesos</div>
+                <button class="details-btn" data-details="La PlayStation 2 es una de las consolas más vendidas de todos los tiempos, con una vasta biblioteca de juegos y gráficos mejorados. Su capacidad para reproducir DVDs la convirtió en un centro de entretenimiento versátil. Un clásico que definió una generación.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation consolas">
+                <img src="consolas playstation/ps1.jpg" alt="PlayStation 1">
+                <h2>PlayStation 1</h2>
+                <div class="Precio">190.000 Pesos</div>
+                <button class="details-btn" data-details="La PlayStation 1 revolucionó el mundo de los videojuegos con sus gráficos 3D y su amplia selección de títulos. Ofrecía experiencias de juego nunca antes vistas y estableció a Sony como un líder en la industria. Una consola icónica que cambió la historia del gaming.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation accesorios">
+                <img src="accesorios playstation/controlps5.jpg" alt="Control Ps5">
+                <h2>Control PS5</h2>
+                <div class="Precio">270.000 Pesos</div>
+                <button class="details-btn" data-details="El Control DualSense de PS5 ofrece retroalimentación háptica avanzada y gatillos adaptativos que brindan una experiencia táctil inmersiva. Su diseño ergonómico y batería de larga duración mejoran cada sesión de juego. Ideal para maximizar la experiencia de juego en PS5.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation accesorios">
+                <img src="accesorios playstation/controleswips3.jpg" alt="control ps3">
+                <h2>Control PS3 Interactivo</h2>
+                <div class="Precio">400.000 Pesos</div>
+                <button class="details-btn" data-details="El Control PS3 Move ofrece interacción con sensores de movimiento para juegos más inmersivos y físicos. Ideal para experiencias de realidad aumentada y juegos deportivos. Una excelente adición para aquellos que buscan una forma de jugar más activa.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation accesorios">
+                <img src="accesorios playstation/cascosVR.jpg" alt="Casco VR">
+                <h2>Casco PS5 Realidad Virtual</h2>
+                <div class="Precio">900.000 Pesos</div>
+                <button class="details-btn" data-details="El Casco PS5 VR lleva la inmersión a otro nivel con gráficos mejorados y un campo de visión amplio. Compatible con una variedad de juegos VR, ofrece experiencias de juego totalmente envolventes. Perfecto para los entusiastas de la realidad virtual.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation accesorios">
+                <img src="accesorios playstation/cascosps5.jpg" alt="Cascos Inalambricos">
+                <h2>Cascos Inalambricos PS5</h2>
+                <div class="Precio">360.000 Pesos</div>
+                <button class="details-btn" data-details="Los Cascos Inalámbricos PS5 ofrecen sonido envolvente 3D y conectividad inalámbrica para una experiencia auditiva sin igual. Con un diseño cómodo y batería de larga duración, son perfectos para largas sesiones de juego. Ideal para quienes buscan calidad de audio superior.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product playstation accesorios">
+                <img src="accesorios playstation/audifonosps5.jpg" alt="Audifonos">
+                <h2>Audifonos Inalambricos PS5</h2>
+                <div class="Precio">130.000 Pesos</div>
+                <button class="details-btn" data-details="Los Audífonos Inalámbricos PS5 brindan un audio claro y envolvente con conectividad sin cables. Su diseño ligero y batería duradera aseguran comodidad y rendimiento durante el juego. Perfectos para una experiencia auditiva de alta calidad.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+
+            <!-- Productos de Nintendo -->
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/ToZbreathofthewild.jpg" alt="The Legend of Zelda">
+                <h2>The Legend of Zelda Breath of the Wild</h2>
+                <div class="Precio">117.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://youtu.be/ofH5ptn5w-A?si=xmRDmNJf21UeV2BF', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/zeldawindwaker.jpg" alt="The Legend of Zelda">
+                <h2>The Legend of Zelda Windwaker</h2>
+                <div class="Precio">97.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=IkVt1s_ZFbw', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/supersmash.jpg" alt="SuperSmash">
+                <h2>SuperSmash Bros Ultimate</h2>
+                <div class="Precio">100.000</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=WShCN-AYHqA', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/pokemonsword.jpg" alt="Pokemon">
+                <h2>Pokemon Sword</h2>
+                <div class="Precio">45.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=fKiz265SMME', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/overcooked.jpg" alt="Overcooked">
+                <h2>Overcooked</h2>
+                <div class="Precio">34.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=lcVISRmANIo', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/marioparty.jpg" alt="SuperMario Party">
+                <h2>Super Mario Party</h2>
+                <div class="price">67.900 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=OrLEHNF8qTg', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/mariodeluxe8.jpg" alt="Mario Kart 8">
+                <h2>Mario Kart 8 Deluxe</h2>
+                <div class="Precio">210.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=tKlRN2YpxRE', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/luigis-mansion-3.jpg" alt="Luigi Mansion 3">
+                <h2>Luigi Mansion 3</h2>
+                <div class="Precio">59.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=RSGgCfbYrg0', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/FFX.jpg" alt="Final Fantasy X">
+                <h2>Final Fantasy X</h2>
+                <div class="Precio">78.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=vpF5lfHrdm8', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo juegos">
+                <img src="juegos de nintendo/crashbandicoot.jpg" alt="Crash Bandicoot">
+                <h2>Crash Bandicoot</h2>
+                <div class="Precio">12.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=x5K3KaL_xVI', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/nintendoswitch.jpg" alt="Nintendo Switch">
+                <h2>Nintendo Switch</h2>
+                <div class="Precio">2.900.000 Pesos</div>
+                <button class="details-btn" data-details="La Nintendo Switch es una consola híbrida que permite jugar tanto en casa como en movimiento. Ofrece una amplia biblioteca de juegos y modos multijugador versátiles. Ideal para quienes buscan flexibilidad y entretenimiento en cualquier lugar.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/nintendowii.jpg" alt="Nintendo Switch">
+                <h2>Nintendo Wii</h2>
+                <div class="Precio">600.000 Pesos</div>
+                <button class="details-btn" data-details="La Nintendo Wii revolucionó los videojuegos con su control de movimiento, proporcionando una experiencia de juego interactiva. Con una extensa biblioteca de juegos familiares y sociales, es perfecta para diversión en grupo. Un clásico de la innovación en juegos.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/super NES.jpg" alt="Nintendo Switch">
+                <h2>Super Nintendo NES</h2>
+                <div class="Precio">480.000 Pesos</div>
+                <button class="details-btn" data-details="La Super Nintendo Entertainment System (SNES) es una consola retro con una rica biblioteca de juegos icónicos. Con gráficos avanzados para su época y un diseño robusto, sigue siendo querida por los aficionados a los juegos clásicos. Un símbolo de la era dorada de los videojuegos.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/wiiU.jpg" alt="Nintendo Switch">
+                <h2>Nintendo Wii U</h2>
+                <div class="Precio">350.000 Pesos</div>
+                <button class="details-btn" data-details="La Nintendo Wii U introdujo un innovador GamePad con pantalla táctil para una experiencia de juego única. Compatible con juegos de Wii y con una amplia gama de títulos exclusivos, ofrece entretenimiento versátil. Perfecta para quienes disfrutan de nuevas formas de interacción.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/nintendominiNES.jpg" alt="Nintendo Switch">
+                <h2>Nintendo Mini NES</h2>
+                <div class="Precio">299.000 Pesos</div>
+                <button class="details-btn" data-details="La Nintendo Mini NES es una versión en miniatura de la clásica NES, con 30 juegos preinstalados. Ofrece una experiencia de juego nostálgica con gráficos originales en un formato compacto. Ideal para coleccionistas y aficionados a los juegos retro.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/nintendoDS.jpg" alt="Nintendo Switch">
+                <h2>Nintendo DS</h2>
+                <div class="Precio">230.000 Pesos</div>
+                <button class="details-btn" data-details="La Nintendo DS es una consola portátil con doble pantalla, incluyendo una táctil, que ofrece experiencias de juego innovadoras. Con una extensa biblioteca de juegos y funciones multijugador, es ideal para el entretenimiento portátil. Un clásico de la movilidad en juegos.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/nintendo3ds.jpeg" alt="Nintendo Switch">
+                <h2>Nintendo 3DS</h2>
+                <div class="Precio">300.000 Pesos</div>
+                <button class="details-btn" data-details="La Nintendo 3DS mejora la experiencia portátil con gráficos 3D sin gafas y una pantalla táctil interactiva. Con una amplia variedad de juegos y compatibilidad con títulos de DS, es perfecta para jugadores que buscan profundidad y portabilidad. Una revolución en consolas portátiles.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/n64.jpg" alt="Nintendo Switch">
+                <h2>Nintendo 64</h2>
+                <div class="Precio">180.000 Pesos</div>
+                <button class="details-btn" data-details="La Nintendo 64 es conocida por sus gráficos en 3D y su control ergonómico de tres puntas. Con juegos icónicos y un rendimiento potente para su época, sigue siendo amada por los aficionados a los juegos clásicos. Un hito en la historia de las consolas.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/gamecube.jpg" alt="Nintendo Switch">
+                <h2>Nintendo Game Cube</h2>
+                <div class="Precio">200.000 Pesos</div>
+                <button class="details-btn" data-details="La Nintendo GameCube ofrece gráficos avanzados y un diseño compacto con discos mini-DVD. Su control ergonómico y amplia selección de juegos exclusivos la hacen ideal para los aficionados a Nintendo. Una consola robusta con un legado duradero.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo consolas">
+                <img src="consolas nintendo/gameboy.jpg" alt="Nintendo Switch">
+                <h2>GameBoy</h2>
+                <div class="Precio">90.000 Pesos</div>
+                <button class="details-btn" data-details="El Game Boy es una consola portátil icónica que introdujo el juego en cualquier lugar con su diseño compacto y duradero. Con una vasta biblioteca de juegos clásicos, sigue siendo un favorito entre los coleccionistas. Un verdadero pionero en el gaming portátil.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo accesorios">
+                <img src="accesorios nintendo/joycon.jpg" alt="Joy-Con">
+                <h2>Joy-Con</h2>
+                <div class="Precio">145.000 Pesos</div>
+                <button class="details-btn" data-details="Los Joy-Con son los controles versátiles de la Nintendo Switch, que pueden usarse juntos o por separado para modos multijugador. Con sensores de movimiento y vibración HD, ofrecen una experiencia de juego inmersiva. Perfectos para una jugabilidad flexible y dinámica.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo accesorios">
+                <img src="accesorios nintendo/cargador.jpg" alt="Joy-Con">
+                <h2>Cargadores</h2>
+                <div class="Precio">70.000 Pesos</div>
+                <button class="details-btn" data-details="Los cargadores para Nintendo garantizan que tus dispositivos estén siempre listos para jugar. Con opciones para consolas portátiles y controles, son esenciales para largas sesiones de juego. Ideal para mantener la diversión sin interrupciones.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo accesorios">
+                <img src="accesorios nintendo/controles interactivos.jpg" alt="Joy-Con">
+                <h2>Controles Interactivos</h2>
+                <div class="Precio">230.000 Pesos</div>
+                <button class="details-btn" data-details="Los controles interactivos de Nintendo, como el Wii Remote y el Joy-Con, ofrecen una jugabilidad dinámica con sensores de movimiento. Diseñados para experiencias inmersivas y multijugador, son perfectos para juegos activos y sociales. Innovación en cada movimiento.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo accesorios">
+                <img src="accesorios nintendo/repisa.jpg" alt="Joy-Con">
+                <h2>Soporte para Controles y Juegos</h2>
+                <div class="Precio">127.000 Pesos</div>
+                <button class="details-btn" data-details="El soporte para controles y juegos de Nintendo organiza y almacena tus accesorios y juegos de manera ordenada. Con capacidad para múltiples controles y cartuchos, es ideal para mantener tu espacio de juego limpio y accesible. Perfecto para aficionados bien organizados.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product nintendo accesorios">
+                <img src="accesorios nintendo/estuche.jpg" alt="Joy-Con">
+                <h2>Estuche</h2>
+                <div class="Precio">34.000 Pesos</div>
+                <button class="details-btn" data-details="El estuche para Nintendo Switch protege tu consola y accesorios mientras te desplazas. Con compartimentos específicos para los Joy-Con, cables y juegos, asegura un transporte seguro y organizado. Ideal para jugadores en movimiento.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <!-- Productos de Android -->
+            <div class="product android juegos">
+                <img src="juegos android/clash.jpg" alt="Clash of Clans">
+                <h2>Clash of Clans</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=XH3Xu1-cvII', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div> 
+            <div class="product android juegos">
+                <img src="juegos android/albion.jpg" alt="Albion Online">
+                <h2>Albion Online</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=C0fytYVZ_mQ', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android juegos">
+                <img src="juegos android/asphalt9legends.jpg" alt="Asphalt 9">
+                <h2>Asphalt 9 Legends</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=ot63S91Ihwk', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android juegos">
+                <img src="juegos android/blodstrike.jpg" alt="BloodStrike">
+                <h2>BloodStrike</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=V581-wZLzdU', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android juegos">
+                <img src="juegos android/codmobile.jpg" alt="COD Mobile">
+                <h2>Call of Duty Mobile</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=n4b8FRUDNZo', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android juegos">
+                <img src="juegos android/dls2023.jpg" alt="Clash of Clans">
+                <h2>Dream League Soccer 2023</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=JtlZmHqnX3c', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android juegos">
+                <img src="juegos android/madridzombie.jpg" alt="Clash of Clans">
+                <h2>Madrid Zombie</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=8jyJDN9CBrc', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android juegos">
+                <img src="juegos android/minecraft.jpg" alt="Minecraft">
+                <h2>Minecraft PE</h2>
+                <div class="Precio">18.000 Pesos</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=Rla3FUlxJdE', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android juegos">
+                <img src="juegos android/mobilelegend.jpg" alt="Mobile Leguends">
+                <h2>Mobile Leguends</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=Hk7yO4LowiE', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android juegos">
+                <img src="juegos android/pokemon.jpg" alt="Pokemon GO">
+                <h2>Pokemon GO</h2>
+                <div class="Precio">Gratis</div>
+                <button class="Detalles" onclick="window.open('https://www.youtube.com/watch?v=PAd3bXYjIzA', '_blank')">Trailer</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/asusrog8pro.jpg" alt="Android Console">
+                <h2>Asus ROG 8 pro</h2>
+                <div class="Precio">700.000 Pesos</div>
+                <button class="details-btn" data-details="El Asus ROG 8 Pro es un smartphone de alto rendimiento diseñado para gamers, con una pantalla AMOLED de 144Hz y un procesador Snapdragon de última generación. Ofrece una batería de larga duración y opciones avanzadas de refrigeración. Perfecto para juegos móviles intensivos.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/iqoo 12.jpg" alt="Android Console">
+                <h2>IQOO 12</h2>
+                <div class="Precio">1.100.000 Pesos</div>
+                <button class="details-btn" data-details="El IQOO 12 es un teléfono inteligente potente con una pantalla AMOLED de 120Hz y un procesador Snapdragon 8 Gen 2. Su carga rápida y cámaras de alta resolución lo hacen ideal para usuarios exigentes. Perfecto para aquellos que buscan rendimiento y estilo.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/oneplusACE3V.jpg" alt="Android Console">
+                <h2>OnePlus ACE 3V</h2>
+                <div class="Precio">960.000 Pesos</div>
+                <button class="details-btn" data-details="El OnePlus ACE 3V combina elegancia y potencia con su diseño estilizado y hardware robusto. Ofrece una pantalla Fluid AMOLED de 120Hz y carga rápida. Ideal para usuarios que desean un rendimiento ágil y una experiencia visual superior.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/oppo-find-x7-ultra.jpg" alt="Android Console">
+                <h2>OPPO Find X7 Ultra</h2>
+                <div class="Precio">760.000 Pesos</div>
+                <button class="details-btn" data-details="El OPPO Find X7 Ultra ofrece una pantalla OLED curva de 120Hz y un sistema de cámaras avanzadas con IA. Con un diseño premium y carga súper rápida, es ideal para fotografía y multimedia. Perfecto para quienes buscan innovación y elegancia.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/OppoReno11.jpg" alt="Android Console">
+                <h2>OPPO Reno 11</h2>
+                <div class="Precio">937.000 Pesos</div>
+                <button class="details-btn" data-details="El OPPO Reno 11 destaca por su diseño elegante y su cámara principal de alta resolución con modo nocturno. Su pantalla AMOLED de 90Hz ofrece colores vibrantes y una experiencia visual fluida. Ideal para usuarios que valoran la estética y la fotografía.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/Realme gt neo 5.jpeg" alt="Android Console">
+                <h2>Realme GT NEO 5</h2>
+                <div class="Precio">1.200.000 Pesos</div>
+                <button class="details-btn" data-details="El Realme GT NEO 5 ofrece un rendimiento sobresaliente con su procesador MediaTek Dimensity y pantalla AMOLED de 120Hz. Con carga rápida y diseño llamativo, es perfecto para gaming y multitarea. Ideal para usuarios que buscan calidad y estilo a buen precio.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/redmagic-9-pro.jfif" alt="Android Console">
+                <h2>RedMagin 9 Pro</h2>
+                <div class="Precio">900.000 Pesos</div>
+                <button class="details-btn" data-details="El RedMagic 9 Pro es un teléfono gamer con pantalla AMOLED de 165Hz y un sistema de refrigeración avanzado. Equipado con el último Snapdragon y botones de juego dedicados, ofrece una experiencia de juego excepcional. Perfecto para jugadores móviles dedicados.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/Vivo-X100-Pro-1.jpg" alt="Android Console">
+                <h2>VIVO X100 Pro</h2>
+                <div class="Precio">1.760.000 Pesos </div>
+                <button class="details-btn" data-details="El VIVO X100 Pro ofrece una experiencia fotográfica premium con su sistema de cámaras avanzadas y óptica Zeiss. Su pantalla AMOLED de 120Hz y carga rápida mejoran la experiencia general. Ideal para entusiastas de la fotografía y el diseño elegante.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/xiaomi redmi note 12.jpg" alt="Android Console">
+                <h2>Xiaomi Redmi Note 12</h2>
+                <div class="Precio">700.000 Pesos</div>
+                <button class="details-btn" data-details="El Xiaomi Redmi Note 12 combina una pantalla AMOLED de 120Hz con un potente procesador MediaTek Dimensity. Su batería de larga duración y cámaras versátiles lo hacen perfecto para uso diario. Ideal para usuarios que buscan rendimiento y valor.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android consolas">
+                <img src="consolas android/xiaomiRedmiK70.jpg" alt="Android Console">
+                <h2>Xiaomi Redmi K70</h2>
+                <div class="Precio">980.000 Pesos</div>
+                <button class="details-btn" data-details="El Xiaomi Redmi K70 ofrece un rendimiento robusto con su procesador Snapdragon y pantalla AMOLED de alta frecuencia. Sus características avanzadas de fotografía y carga rápida lo hacen ideal para usuarios exigentes. Perfecto para quienes desean potencia y estilo.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android accesorios">
+                <img src="accesorios android/control.jpg" alt="Android Controller">
+                <h2>Control Para Celular</h2>
+                <div class="Precio">60.000 Pesos</div>
+                <button class="details-btn" data-details="El Control para Celular convierte tu teléfono en una consola de juegos portátil, ofreciendo botones físicos para una mejor experiencia de juego. Compatible con la mayoría de los dispositivos móviles. Ideal para gamers que buscan mayor precisión y comodidad.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android accesorios">
+                <img src="accesorios android/cableHDMI.jpg" alt="Android Controller">
+                <h2>Cable HDMI para Celular</h2>
+                <div class="Precio">18.000 Pesos</div>
+                <button class="details-btn" data-details="El Cable HDMI para Celular permite conectar tu dispositivo móvil a pantallas más grandes, ofreciendo una experiencia de visualización mejorada para juegos y videos. Compatible con la mayoría de smartphones. Ideal para presentaciones y entretenimiento.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android accesorios">
+                <img src="accesorios android/forros.jpg" alt="Android Controller">
+                <h2>Forros para Celulares</h2>
+                <div class="Precio">12.000 Pesos</div>
+                <button class="details-btn" data-details="Los Forros para Celulares protegen tu dispositivo contra caídas y golpes, mientras añaden un toque de estilo. Disponibles en una variedad de diseños y materiales. Perfectos para quienes buscan protección y personalización.">Detalles</button>
+                <<button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android accesorios">
+                <img src="accesorios android/fundadedos.jpg" alt="Android Controller">
+                <h2>Fundas para Dedos</h2>
+                <div class="Precio">8.000 Pesos</div>
+                <button class="details-btn" data-details="Las Fundas para Dedos mejoran la precisión y velocidad al jugar en dispositivos móviles, evitando el deslizamiento y sudoración. Fabricadas con materiales transpirables y antideslizantes. Ideales para gamers que buscan un rendimiento óptimo.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+            <div class="product android accesorios">
+                <img src="accesorios android/tarjetas.jpg" alt="Android Controller">
+                <h2>Tarjetas de Regalo Playstore</h2>
+                <div class="Precio">19.000 Pesos</div>
+                <button class="details-btn" data-details="Las Tarjetas de Regalo Playstore son una opción perfecta para regalar, permitiendo la compra de aplicaciones, juegos, y más en Google Play. Disponibles en varias denominaciones. Perfectas para cualquier ocasión y fácil de usar.">Detalles</button>
+                <button class="Comprar" onclick="addToCart()">Comprar</button> 
+            </div>
+        </div>
+    </main>
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+    <script>
+        function showDropdown(platform) {
+            const dropdown = document.getElementById(`${platform}-dropdown`);
+            dropdown.style.display = "block";
+        }
+
+        function hideDropdown() {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+                dropdown.style.display = "none";
+            });
+        }
+
+        function showProducts(platform, category) {
+            const allProducts = document.querySelectorAll('.product');
+            allProducts.forEach(product => {
+                product.style.display = 'none';
+            });
+
+            const selectedProducts = document.querySelectorAll(`.${platform}.${category}`);
+            selectedProducts.forEach(product => {
+                product.style.display = 'block';
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const productsContainer = document.getElementById('products-container');
+            const welcomeScreen = document.getElementById('welcome-screen');
+            
+            // Ocultar productos inicialmente
+            productsContainer.style.display = 'none';
+
+            // Funciones para mostrar/ocultar productos y pantalla de bienvenida
+            function showProducts() {
+                welcomeScreen.style.display = 'none';
+                productsContainer.style.display = 'flex';
+            }
+
+            // Asignar la función showProducts a los enlaces del menú
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', showProducts);
+            });
+        });
+        function openTrailer(url) {
+            window.open(url, '_blank');
+        }
+        let cartCount = 0;
+        const translations = {
+            es: {
+                welcome: 'Bienvenido a mi tienda virtual gamer espero que esta tienda sea de su agrado y tenga una grata experiencia usandola.',
+                navigate: 'Utiliza el menú de arriba para navegar por los productos.',
+                cart: 'Carrito',
+                logout: 'Cerrar Sesión'
+            },
+            en: {
+                welcome: 'Welcome to my virtual gamer store, I hope you like this store and have a pleasant experience using it.',
+                navigate: 'Use the menu above to navigate through the products.',
+                cart: 'Cart',
+                logout: 'Log Out'
+            },
+            fr: {
+                welcome: 'Bienvenue dans ma boutique de joueurs virtuelle, jespère que vous apprécierez cette boutique et que vous vivrez une expérience agréable en lutilisant.',
+                navigate: 'Utilisez le menu ci-dessus pour naviguer parmi les produits.',
+                cart: 'Panier',
+                logout: 'Se Déconnecter'
+            },
+            de: {
+                welcome: 'Willkommen in meinem virtuellen Gamer-Shop. Ich hoffe, dass Ihnen dieser Shop gefällt und Sie eine angenehme Erfahrung damit haben.',
+                navigate: 'Verwenden Sie das obige Menü, um durch die Produkte zu navigieren.',
+                cart: 'Warenkorb',
+                logout: 'Abmelden'
+            },
+            it: {
+                welcome: 'Benvenuto nel mio negozio di giocatori virtuali, spero che questo negozio ti piaccia e che tu abbia una piacevole esperienza di utilizzo.',
+                navigate: 'Usa il menu sopra per navigare tra i prodotti.',
+                cart: 'Carrello',
+                logout: 'Disconnettersi'
+            }
+        };
+
+        function setLanguage(lang) {
+            document.getElementById('welcome-title').innerText = translations[lang].welcome;
+            document.getElementById('navigate-text').innerText = translations[lang].navigate;
+            document.getElementById('cartButton').innerText = translations[lang].cart;
+            document.querySelector('.header-button[onclick="logout()"]').innerText = translations[lang].logout;
+        }
+
+        // Función para agregar productos al carrito
+        function addToCart() {
+        cartCount++;
+        document.getElementById('cartButton').setAttribute('data-count', cartCount);
+        }
+
+    // Función para mostrar el contenido del carrito
+        function viewCart() {
+        alert('Tienes ' + cartCount + ' productos en tu carrito.');
+        }
+        function logout() {
+            window.location.href = 'login.html'; // Redirige a la página de inicio de sesión
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('product-modal');
+            const closeBtn = document.querySelector('.close-btn');
+            const detailsButtons = document.querySelectorAll('.details-btn');
+        
+            detailsButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const details = event.target.dataset.details;
+                    showProductDetails(details);
+                });
+            });
+        
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        
+            function showProductDetails(details) {
+                document.getElementById('modal-description').textContent = details;
+                modal.style.display = 'block';
+            }
+        });
+        
+
+</script>
+</body>
+</html>

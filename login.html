@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión / Registrarse</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-image: url(fondos/v2-MINIMALIST-LANDSCAPE-SUN-4k.png);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .container {
+            position: relative;
+            width: 1000px;
+            height: 500px;
+            background-color: transparent;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: auto;
+            margin-bottom: auto;
+            /* Borde de neon animado */
+            box-shadow: 0 0 20px rgba(97, 76, 175, 0.8),
+                        0 0 40px rgba(97, 76, 175, 0.6),
+                        0 0 60px rgba(97, 76, 175, 0.4),
+                        0 0 80px rgba(97, 76, 175, 0.2);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 20px rgba(97, 76, 175, 0.8),
+                            0 0 40px rgba(97, 76, 175, 0.6),
+                            0 0 60px rgba(97, 76, 175, 0.4),
+                            0 0 80px rgba(97, 76, 175, 0.2);
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(97, 76, 175, 0.2),
+                            0 0 40px rgba(97, 76, 175, 0.4),
+                            0 0 60px rgba(97, 76, 175, 0.6),
+                            0 0 80px rgba(97, 76, 175, 0.8);
+            }
+        }
+        .form-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1000px;
+            height: 100%;
+            display: flex;
+            transition: transform 0.9s ease-in-out;
+        }
+        .form {
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .form h2 {
+            margin-bottom: 20px;
+        }
+        .form input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form button {
+            margin-top: 20px;
+            padding: 10px;
+            width: 70%;
+            border: none;
+            border-radius: 5px;
+            background-color: #614caf;
+            color: #fff;
+            cursor: pointer;
+        }
+        .form button:hover {
+            background-color: #0e1cd8;
+        }
+        .form a {
+            color: #4c56af;
+            text-decoration: none;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .welcome-message {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+        }
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            background-color: gray;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: transform 0.9s ease-in-out;
+            z-index: 100;
+            text-align: center;
+            border-radius: 200px 0px 0px 200px; 
+        }
+        .container.right-panel-active .overlay-container {
+            border-radius: 0px 200px 200px 0px; /* Borde izquierdo redondeado */
+        }
+
+        .overlay-container .overlay {
+            padding: 50px;
+        }
+        .overlay-container h2 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .overlay-container p {
+            margin: 20px 0;
+        }
+        .overlay-container button {
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .overlay-container button:hover {
+            background-color: #fff;
+            color: #4CAF50;
+        }
+        .container.right-panel-active .form-container {
+            transform: translateX(-5%);
+        }
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+        .social-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .social-container a {
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+            overflow: hidden;
+        }
+        
+        .social-container a img {
+            max-width: 105px;
+            max-height: 100px;
+            object-fit: cover;
+        }
+        
+        .social-container a:hover {
+            background-color: #eee;
+        }
+        h2{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container">
+            <div class="form" id="sign-in-form">
+                <h2>Iniciar Sesión</h2>
+                <div class="social-container">
+                    <a href="#"><img src="iconos/twich.jpg" alt="Twitch"></a>
+                    <a href="#"><img src="iconos/X.jpg" alt="Twitter"></a>
+                    <a href="#"><img src="iconos/instagram.jpg" alt="Instagram"></a>
+                    <a href="#"><img src="iconos/tiktok.jpg" alt="TikTok"></a>
+                </div>
+                <input type="email" placeholder="Email" id="login-email">
+                <input type="password" placeholder="Password" id="login-password">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button id="login-button">INICIAR SESIÓN</button>
+            </div>
+            <div class="form" id="sign-up-form">
+                <h2>Registrarse</h2>
+                <div class="social-container">
+                    <a href="#"><img src="iconos/twich.jpg" alt="Twitch"></a>
+                    <a href="#"><img src="iconos/X.jpg" alt="Twitter"></a>
+                    <a href="#"><img src="iconos/instagram.jpg" alt="Instagram"></a>
+                    <a href="#"><img src="iconos/tiktok.jpg" alt="TikTok"></a>
+                </div>
+                <input type="text" placeholder="Nombre" id="register-name">
+                <input type="email" placeholder="Email" id="register-email">
+                <input type="password" placeholder="Password" id="register-password">
+                <button id="register-button">REGISTRARSE</button>
+            </div>
+        </div>
+        <div class="overlay-container" id="overlay-container">
+            <div id="overlay-left" class="overlay">
+                <h2>¡Hola! ¿Primera Vez?</h2>
+                <p>Regístrese con sus datos personales para usar todas las funciones del sitio</p>
+                <button id="signUp">Registrarse</button>
+            </div>
+            <div id="overlay-right" class="overlay">
+                <h2>¡Bienvenido de Nuevo!</h2>
+                <p>Ingrese sus datos personales para usar todas las funciones del sitio</p>
+                <button id="signIn">Iniciar Sesión</button>
+            </div>
+        </div>
+        <div class="welcome-message">
+            <p id="welcome-text"></p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1"></script>
+    <script>
+        const container = document.getElementById('container');
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const formContainer = document.querySelector('.form-container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add('right-panel-active');
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+        });
+
+        document.getElementById('login-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+            if (!validateEmail(email)) {
+                alert('Por favor, ingrese un email válido.');
+            } else if (password === '') {
+                alert('Por favor, ingrese su contraseña.');
+            } else {
+                // Simulación de inicio de sesión exitoso
+                const userName = localStorage.getItem('userName');
+                if (userName) {
+                    window.location.href = 'pagina1.html';
+                } else {
+                    alert('Usuario no registrado. Regístrese primero.');
+                }
+            }
+        });
+
+        document.getElementById('register-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value.trim();
+            const email = document.getElementById('register-email').value.trim();
+            const password = document.getElementById('register-password').value.trim();
+            if (!validateName(name)) {
+                alert('Por favor, ingrese un nombre válido sin números.');
+            } else if (!validateEmail(email)) {
+                alert('Por favor, ingrese un email válido.');
+            } else if (password === '') {
+                alert('Por favor, ingrese una contraseña.');
+            } else {
+                localStorage.setItem('userName', name);
+                container.classList.remove('right-panel-active');
+                // Activar la animación de confeti
+                startConfetti();
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+        function validateName(name) {
+            const re = /^[a-zA-Z\s]*$/;
+            return re.test(name);
+        }
+
+        function startConfetti() {
+            const end = Date.now() + (5 * 1000); // 5 segundos de animación
+
+            (function frame() {
+                confetti({
+                    particleCount: 2,
+                    spread: 360,
+                    origin: { x: Math.random(), y: Math.random() - 0.2 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+        
+    </script>
+</body>
+</html>
